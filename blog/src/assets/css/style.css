@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --Theme: null;
+}
+
+html {
+  filter: var(--Theme);
+}
+
+/* 引入全局字体 */
+@font-face {
+  font-family: "ali-Regular";
+  src: url("../font/AlimamaFangYuanTiVF-Thin.woff2") format("woff2"),
+    url("../font/AlimamaFangYuanTiVF-Thin.woff") format("woff");
+  font-display: swap;
+}

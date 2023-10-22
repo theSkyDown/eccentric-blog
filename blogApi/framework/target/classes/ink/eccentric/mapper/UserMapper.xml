@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ink.eccentric.mapper.UserMapper">
+
+    <!--
+        1.要求查出的用户没有被删除
+    -->
+    <select id="getUserByUsername" resultType="ink.eccentric.domain.po.User">
+        select * from sys_user
+        where user_name=#{username}
+          and del_flag=0
+    </select>
+
+    <!--
+        1.要求查找的用户没有被删除
+        2.要求查出的权限是正常的(menu的状态是正常的)
+        3.要求查出的权限是接口类型(按钮类型)
+    -->
+    <select id="getUserPermissions" resultType="string">
+        select distinct sm.perms from sys_user su
+        left join sys_user_role sur on su.id=sur.user_id
+        left join sys_role sr on sur.role_id=sr.id
+        left join sys_role_menu srm on sr.id=srm.role_id
+        left join sys_menu sm on srm.menu_id=sm.id
+        where su.id=#{id} and su.del_flag=0
+          and sr.del_flag=0 and sr.status=0
+          and sm.del_flag=0 and sr.status=0 and sm.menu_type='F'
+    </select>
+
+    <update id="updateUserInfo">
+        update sys_user set nick_name=#{nickName},email=#{email},avatar=#{avatar},sex=#{sex},update_time=#{updateTime},update_by=#{updateBy}
+            where id=#{id}
+    </update>
+
+    <!--
+        1.要求查出的用户没有被删除
+    -->
+    <select id="getUserByNickName" resultType="ink.eccentric.domain.po.User">
+        select * from sys_user
+        where nick_name=#{nickName}
+          and del_flag=0
+    </select>
+
+    <!--
+        1.要求查出的用户没有被删除
+    -->
+    <select id="getUserByEmail" resultType="ink.eccentric.domain.po.User">
+        select * from sys_user
+        where email=#{email}
+          and del_flag=0
+    </select>
+
+
+    <insert id="insertUser"  useGeneratedKeys="true" keyProperty="id">
+        insert into sys_user(user_name,nick_name,password,type,create_by,create_time,update_by,update_time
+            <if test="phonenumber!=null and phonenumber!=''">
+                ,phonenumber
+            </if>
+            <if test="email!=null and email!=''">
+                ,email
+            </if>
+            <if test="sex!=null and sex!=''">
+                ,sex
+            </if>
+            <if test="status!=null and status!=''">
+                ,status
+            </if>
+        )
+            values(#{userName},#{nickName},#{password},#{type},#{createBy},#{createTime},#{updateBy},#{updateTime}
+                <if test="phonenumber!=null and phonenumber!=''">
+                    ,#{phonenumber}
+                </if>
+                <if test="email!=null and email!=''">
+                    ,#{email}
+                </if>
+                <if test="sex!=null and sex!=''">
+                    ,#{sex}
+                </if>
+                <if test="status!=null and status!=''">
+                    ,#{status}
+                </if>
+            )
+    </insert>
+
+    <select id="getUserPagesList" resultType="ink.eccentric.domain.vo.user.UserVo">
+        select * from sys_user where del_flag=0
+        <if test="username!=null and username!=''">
+           and user_name like "%"#{username}"%"
+        </if>
+        <if test="phone!=null and phone!=''">
+            and phonenumber like "%"#{phone}"%"
+        </if>
+        <if test="status!=null and status!=''">
+            and status = #{status}
+        </if>
+        order by id desc
+        <if test="pageNum!=null and pageSize!=null">
+            limit #{pageNum},#{pageSize}
+        </if>
+    </select>
+
+    <select id="getUserCount" resultType="integer">
+        select count(*) from sys_user where del_flag=0
+        <if test="username!=null and username!=''">
+            and user_name like "%"#{username}"%"
+        </if>
+        <if test="phone!=null and phone!=''">
+            and phonenumber like "%"#{phone}"%"
+        </if>
+        <if test="status!=null and status!=''">
+            and status = #{status}
+        </if>
+    </select>
+
+    <select id="getUserDetailById" resultType="ink.eccentric.domain.vo.user.UpdateUserInfoVo">
+        select * from sys_user where del_flag=0 and id=#{id}
+    </select>
+
+    <update id="deleteUser">
+        update sys_user set del_flag=1,update_by=#{updateBy},update_time=#{updateTime} where del_flag=0 and id in
+        <foreach collection="ids" separator="," index="index" open="(" close=")" item="id">
+            #{id}
+        </foreach>
+    </update>
+
+    <update id="updateUser">
+        update sys_user set nick_name=#{nickName},phonenumber=#{phonenumber},email=#{email},sex=#{sex},status=#{status},update_by=#{updateBy},update_time=#{updateTime}
+            where id=#{id}
+    </update>
+
+    <update id="changeStatus">
+        update sys_user set status=#{status},update_by=#{updateBy},update_time=#{updateTime}
+            where id=#{id}
+    </update>
+</mapper>

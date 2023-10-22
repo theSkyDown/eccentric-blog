@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ink.eccentric.mapper.ArticleMapper">
+
+    <!--
+        1.查询热门文章 封装成 ResponseResult
+        2.必须是正式文章
+        3.按照浏览量进行排序
+        4.最多查询十条
+    -->
+    <select id="hotArticleList" resultType="ink.eccentric.domain.vo.article.HotArticleVo">
+        select * from article where del_flag=0 order by view_count desc limit 0,10
+    </select>
+
+    <!--
+        1.只能查询正式发布的文章
+        2.置顶的文章要实现在最前面
+    -->
+    <select id="articleList" resultType="ink.eccentric.domain.vo.article.ArticleListVo">
+        select distinct a.*,c.name as categoryName from article a
+          left join category c on a.category_id = c.id
+        <if test="tagId!=null and tagId > 0">
+            left join article_tag at on at.article_id=a.id
+        </if>
+        where a.del_flag=0 and a.status=0
+        <if test="categoryId!=null and categoryId > 0">
+            and a.category_id=#{categoryId}
+        </if>
+        <if test="tagId!=null and tagId > 0">
+            and at.tag_id=#{tagId}
+        </if>
+        <if test="title!=null and title!=''">
+            and a.title like "%"#{title}"%"
+        </if>
+        <if test="summary!=null and summary!=''">
+            and a.summary like "%"#{summary}"%"
+        </if>
+        order by a.is_top desc,a.id desc
+        limit #{pageNum},#{pageSize}
+    </select>
+    <select id="articleListCount" resultType="integer">
+        select count(*) from article a
+          left join category c on a.category_id = c.id
+        <if test="tagId!=null and tagId > 0">
+            left join article_tag at on at.article_id=a.id
+        </if>
+        where a.del_flag=0 and a.status=0
+        <if test="categoryId!=null and categoryId > 0">
+            and a.category_id=#{categoryId}
+        </if>
+        <if test="tagId!=null and tagId > 0">
+            and at.tag_id=#{tagId}
+        </if>
+        <if test="title!=null and title!=''">
+            and a.title like "%"#{title}"%"
+        </if>
+        <if test="summary!=null and summary!=''">
+            and a.summary like "%"#{summary}"%"
+        </if>
+    </select>
+
+    <!--
+        1.要在文章详细信息中展示其分类名
+    -->
+    <select id="articleDetail" resultType="ink.eccentric.domain.vo.article.ArticleDetailVo">
+        select a.*,c.name as categoryName from article a
+           left join category c on a.category_id=c.id
+        where a.status=0
+          and a.del_flag=0
+          and a.id=#{id}
+    </select>
+
+    <select id="getViewCounts" resultType="ink.eccentric.domain.po.Article">
+        select id,view_count from article
+    </select>
+
+    <!--
+        1.根据对应的 id 修改对应的 view_count
+    -->
+    <update id="updateViewCount">
+        update article set view_count =
+            case id
+                <foreach collection="viewCounts" index="key" item="value" separator=" ">
+                    when #{key} then #{value}
+                </foreach>
+            end
+        where id in (
+            <foreach collection="viewCounts" index="key" separator=",">
+                #{key}
+            </foreach>
+        )
+    </update>
+
+    <select id="pigeonholeListCount" resultType="integer">
+        select count(*) from article where del_flag=0 and status=0
+    </select>
+
+    <select id="pigeonholeList" resultType="ink.eccentric.domain.vo.article.PigeonholeArticleVo">
+        select id,title,summary,thumbnail,create_time from article
+          where del_flag=0 and status=0
+        order by create_time desc
+        limit #{pageNum},#{pageSize}
+    </select>
+
+    <select id="getBeforeArticle" resultType="ink.eccentric.domain.vo.article.ArticleRoughVo">
+        select id,title,thumbnail from article
+            where id &lt; #{id} and del_flag=0 and status=0
+        order by id desc
+        limit 1
+    </select>
+
+    <select id="getAfterArticle" resultType="ink.eccentric.domain.vo.article.ArticleRoughVo">
+        select id,title,thumbnail from article
+            where id &gt; #{id} and del_flag=0 and status=0
+        order by id asc
+        limit 1
+    </select>
+
+    <insert id="addArticle" useGeneratedKeys="true" keyProperty="id">
+        insert into article(title,content,summary,category_id,thumbnail,is_top,status,is_comment,create_by,create_time,update_by,update_time)
+            values(#{title},#{content},#{summary},#{categoryId},#{thumbnail},#{isTop},#{status},#{isComment},#{createBy},#{createTime},#{updateBy},#{updateTime})
+    </insert>
+
+    <update id="updateArticle">
+        update article set title=#{title},content=#{content},summary=#{summary},category_id=#{categoryId},thumbnail=#{thumbnail},is_top=#{isTop},is_comment=#{isComment},update_by=#{updateBy},update_time=#{updateTime}
+            where id=#{id}
+    </update>
+
+    <update id="deleteArticle">
+        update article set del_flag=1,update_by=#{updateBy},update_time=#{updateTime} where del_flag=0 and id in
+        <foreach collection="ids" separator="," index="index" open="(" close=")" item="id">
+            #{id}
+        </foreach>
+    </update>
+</mapper>

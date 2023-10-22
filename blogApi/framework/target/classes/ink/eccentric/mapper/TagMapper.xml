@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ink.eccentric.mapper.TagMapper">
+
+    <select id="getTagList" resultType="ink.eccentric.domain.vo.tag.TagVo">
+        select * from tag where del_flag=0
+        <if test="name!=null and name!=''">
+            and name like "%"#{name}"%"
+        </if>
+        <if test="remark!=null and remark!=''">
+            and remark like "%"#{name}"%"
+        </if>
+        <if test="pageNum!=null and pageSize!=null">
+            limit #{pageNum},#{pageSize}
+        </if>
+    </select>
+
+    <select id="getTagCount" resultType="integer">
+        select count(*) from tag where del_flag=0
+        <if test="name!=null and name!=''">
+            and name like "%"#{name}"%"
+        </if>
+        <if test="remark!=null and remark!=''">
+            and remark like "%"#{name}"%"
+        </if>
+    </select>
+
+    <insert id="insertTag">
+        insert into tag(name,create_by,create_time,update_by,update_time,remark)
+            values(#{name},#{createBy},#{createTime},#{updateBy},#{updateTime},#{remark})
+    </insert>
+
+    <update id="deleteTag">
+        update tag set del_flag=1,update_by=#{updateBy},update_time=#{updateTime} where del_flag=0 and id in
+        <foreach collection="ids" separator="," index="index" open="(" close=")" item="id">
+            #{id}
+        </foreach>
+    </update>
+
+    <select id="getTagById" resultType="ink.eccentric.domain.vo.tag.TagVo">
+        select id,name,remark from tag where id = #{id} and del_flag=0
+    </select>
+
+    <update id="updateTag">
+        update tag set name=#{name},remark=#{remark},update_by=#{updateBy},update_time=#{updateTime} where id=#{id}
+    </update>
+</mapper>

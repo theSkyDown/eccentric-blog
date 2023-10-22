@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ink.eccentric.mapper.CategoryMapper">
+
+    <select id="getCategoryList" resultType="ink.eccentric.domain.vo.category.CategoryVo">
+        select * from category where del_flag = 0
+        <if test="status!=null and status!=''">
+            and status=#{status}
+        </if>
+        <if test="name!=null and name!=''">
+            and name like "%"#{name}"%"
+        </if>
+        <if test="pageNum!=null and pageSize!=null">
+            limit #{pageNum},#{pageSize}
+        </if>
+    </select>
+
+    <select id="getCategoryCount" resultType="integer">
+        select count(*) from category where del_flag=0
+        <if test="status!=null and status!=''">
+            and status=#{status}
+        </if>
+        <if test="name!=null and name!=''">
+            and name like "%"#{name}"%"
+        </if>
+    </select>
+
+    <insert id="insertCategory">
+        insert into category(name,description,status,create_by,create_time,update_by,update_time)
+            values(#{name},#{description},#{status},#{createBy},#{createTime},#{updateBy},#{updateTime})
+    </insert>
+
+    <select id="getCategoryById" resultType="ink.eccentric.domain.vo.category.CategoryVo">
+        select id,name,description,status from category where id = #{id} and del_flag=0
+    </select>
+
+    <update id="updateCategory">
+        update category set status=#{status},update_by=#{updateBy},update_time=#{updateTime}
+        <if test="description!=null">
+            ,description=#{description}
+        </if>
+        <if test="name!=null and name!=''">
+            ,name=#{name}
+        </if>
+        where id=#{id}
+    </update>
+
+    <update id="deleteCategory">
+        update category set del_flag=1,update_by=#{updateBy},update_time=#{updateTime} where del_flag=0 and id in
+        <foreach collection="ids" separator="," index="index" open="(" close=")" item="id">
+            #{id}
+        </foreach>
+    </update>
+</mapper>

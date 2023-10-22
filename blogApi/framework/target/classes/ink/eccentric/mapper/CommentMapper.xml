@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ink.eccentric.mapper.CommentMapper">
+
+    <!--
+        1.获取状态(type)为指定状态的文章评论
+        2.获取指定的文章(article_id)的评论
+        3.根据创建时间(create_time)进行排序,新的在后面
+        4.获取的是根节点(root_id=-1)的评论
+        5.分页(pageNum,pageSize)
+    -->
+    <select id="getCommentList" resultType="ink.eccentric.domain.vo.comment.CommentVo">
+        select comment_user.nick_name toCommentUserName,create_user.nick_name nickName,create_user.avatar avatar,c.* from comment c
+            left join sys_user create_user on c.create_by=create_user.id
+            left join sys_user comment_user on c.to_comment_user_id=comment_user.id
+        where
+            c.type=#{type} and c.del_flag=0 and c.root_id=-1
+        <if test="articleId != null">
+            and c.article_id=#{articleId}
+        </if>
+        order by c.create_time desc
+        limit #{pageNum},#{pageSize}
+    </select>
+
+    <select id="getCommentCount" resultType="integer">
+        select count(*) from comment
+        where
+            type=#{type} and del_flag=0 and root_id=-1
+        <if test="articleId != null">
+            and article_id=#{articleId}
+        </if>
+    </select>
+
+
+    <!--
+        1.获取状态(type)为指定状态的文章评论
+        2.获取指定的文章(article_id)的评论
+        3.根据创建时间(create_time)进行排序,新的在后面
+        4.获取的是指定评论(root_id)的评论
+    -->
+    <select id="getChildren" resultType="ink.eccentric.domain.vo.comment.CommentVo">
+        select comment_user.nick_name toCommentUserName,create_user.nick_name nickName,create_user.avatar avatar,c.* from comment c
+            left join sys_user create_user on c.create_by=create_user.id
+            left join sys_user comment_user on c.to_comment_user_id=comment_user.id
+        where
+            c.type=#{type} and c.del_flag=0 and c.root_id=#{rootId}
+        <if test="articleId != null">
+            and c.article_id=#{articleId}
+        </if>
+        order by c.id asc
+    </select>
+
+
+    <insert id="insertComment">
+        insert into comment(type,article_id,root_id,content,to_comment_user_id,to_comment_id,create_by,create_time,update_by,update_time)
+            values(#{type},#{articleId},#{rootId},#{content},#{toCommentUserId},#{toCommentId},#{createBy},#{createTime},#{updateBy},#{updateTime})
+    </insert>
+</mapper>
