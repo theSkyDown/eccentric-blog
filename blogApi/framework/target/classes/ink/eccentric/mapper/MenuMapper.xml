@@ -4,7 +4,7 @@
 <mapper namespace="ink.eccentric.mapper.MenuMapper">
 
     <select id="getRootMenus" resultType="ink.eccentric.domain.vo.menu.RoutesVo">
-        <if test="rolesId.contains(1)">
+        <if test="rolesId.contains(1L)">
             select * from sys_menu
             where parent_id=0
               and del_flag=0
@@ -12,7 +12,7 @@
               and menu_type in ('M','C')
             order by parent_id,order_num
         </if>
-        <if test="!rolesId.contains(1)">
+        <if test="!rolesId.contains(1L) and rolesId.size()>0">
             select distinct sm.* from sys_role_menu srm
             left join sys_menu sm on srm.menu_id = sm.id
             where srm.role_id in
@@ -30,7 +30,7 @@
     </select>
 
     <select id="getChildren" resultType="ink.eccentric.domain.vo.menu.RoutesVo">
-        <if test="rolesId.contains(1)">
+        <if test="rolesId.contains(1L)">
             select * from sys_menu
             where parent_id=#{parentId}
               and del_flag=0
@@ -38,7 +38,7 @@
               and menu_type in ('M','C')
             order by parent_id,order_num
         </if>
-        <if test="!rolesId.contains(1)">
+        <if test="!rolesId.contains(1L)">
             select distinct sm.* from sys_role_menu srm
             left join sys_menu sm on srm.menu_id = sm.id
             where srm.role_id in
@@ -53,6 +53,18 @@
             and sm.menu_type in ('M','C')
             order by sm.parent_id,sm.order_num
         </if>
+    </select>
+
+
+    <select id="getAllRootMenus" resultType="ink.eccentric.domain.vo.menu.MenuTreeSelectVo">
+        select id,menu_name as label,parent_id from sys_menu
+            where del_flag=0 and status=0 and parent_id=0
+        order by parent_id,order_num
+    </select>
+    <select id="getTreeSelectListChildren" resultType="ink.eccentric.domain.vo.menu.MenuTreeSelectVo">
+        select id,menu_name as label,parent_id from sys_menu
+            where del_flag=0 and status=0 and parent_id=#{parentId}
+        order by parent_id,order_num
     </select>
 
 </mapper>

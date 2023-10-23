@@ -26,7 +26,7 @@ export function getRole(roleId) {
 // 修改角色
 export function updateRole(data) {
   return request({
-    url: "/role",
+    url: "/role/update",
     method: "put",
     data: data,
   });
@@ -34,22 +34,22 @@ export function updateRole(data) {
 // 删除角色
 export function delRole(roleId) {
   return request({
-    url: "/role/" + roleId,
+    url: "/role/delete/" + roleId,
     method: "delete",
   });
 }
 // 新增角色
 export function addRole(data) {
   return request({
-    url: "/role",
+    url: "/role/add",
     method: "post",
     data: data,
   });
 }
 // 角色状态修改
-export function changeRoleStatus(roleId, status) {
+export function changeRoleStatus(id, status) {
   const data = {
-    roleId,
+    id,
     status,
   };
   return request({

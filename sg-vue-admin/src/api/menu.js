@@ -11,7 +11,7 @@ export const getRouters = () => {
 // 查询菜单下拉树结构
 export function treeselect() {
   return request({
-    url: "/menu/treeselect",
+    url: "/menu/treeSelect",
     method: "get",
   });
 }

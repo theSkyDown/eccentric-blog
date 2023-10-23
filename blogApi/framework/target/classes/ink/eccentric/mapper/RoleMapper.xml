@@ -9,15 +9,75 @@
         where sur.user_id = #{userId} and sr.status=0 and sr.del_flag=0
     </select>
 
-    <select id="getRolesIdByUserId" resultType="integer">
+    <select id="getRolesIdByUserId" resultType="long">
         select distinct sr.id from sys_role sr
             left join sys_user_role sur on sr.id = sur.role_id
         where sur.user_id = #{userId} and sr.status=0 and sr.del_flag=0
     </select>
+
     <select id="getRolesList" resultType="ink.eccentric.domain.vo.role.RoleVo">
         select * from sys_role where del_flag=0
+        <if test="roleName!=null and roleName!=''">
+            and role_name like "%"#{roleName}"%"
+        </if>
+        <if test="status!=null and status!=''">
+            and status=#{status}
+        </if>
+        order by role_sort asc
+        <if test="pageNum!=null and pageSize!=null">
+            limit #{pageNum},#{pageSize}
+        </if>
+    </select>
+    <select id="getRolesCount" resultType="java.lang.Integer">
+        select count(*) from sys_role where del_flag=0
+        <if test="roleName!=null and roleName!=''">
+            and role_name like "%"#{roleName}"%"
+        </if>
         <if test="status!=null and status!=''">
             and status=#{status}
         </if>
     </select>
+    <select id="getRoleByKey" resultType="ink.eccentric.domain.po.Role">
+        select * from sys_role where del_flag=0 and role_key=#{roleKey}
+    </select>
+
+    <insert id="addRole" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_role(role_name,role_key,role_sort,create_by,create_time,update_by,update_time
+                <if test="status!=null and status!=''">
+                    ,status
+                </if>
+                <if test="remark!=null and remark!=''">
+                    ,remark
+                </if>
+            )
+            values(#{roleName},#{roleKey},#{roleSort},#{createBy},#{createTime},#{updateBy},#{updateTime}
+                <if test="status!=null and status!=''">
+                    ,#{status}
+                </if>
+                <if test="remark!=null and remark!=''">
+                    ,#{remark}
+                </if>
+            )
+    </insert>
+
+    <update id="deleteRole">
+        update sys_role set del_flag=1,update_by=#{updateBy},update_time=#{updateTime} where del_flag=0 and id in
+        <foreach collection="ids" separator="," index="index" open="(" close=")" item="id">
+            #{id}
+        </foreach>
+    </update>
+
+    <select id="getRoleDetailById" resultType="ink.eccentric.domain.vo.role.UpdateRoleVo">
+        select * from sys_role where del_flag=0 and id=#{id}
+    </select>
+
+    <update id="updateRole">
+        update sys_role set role_key=#{roleKey},role_sort=#{roleSort},status=#{status},remark=#{remark},update_by=#{updateBy},update_time=#{updateTime}
+            where id=#{id}
+    </update>
+    <update id="changeStatus">
+        update sys_role set status=#{status},update_by=#{updateBy},update_time=#{updateTime}
+        where id=#{id}
+    </update>
+
 </mapper>

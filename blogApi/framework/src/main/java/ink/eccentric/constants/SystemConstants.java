@@ -1,5 +1,7 @@
 package ink.eccentric.constants;
 
+import java.util.List;
+
 /**
  * @author eccentric
  */
@@ -51,5 +53,7 @@ public class SystemConstants {
      * "普通用户"的角色id
      */
     public static final Long NORMAL_ROLE_ID = 2L;
+
+    public static final List<Long> BASE_ROLE_ID_LIST = List.of(1L,2L);
 
 }

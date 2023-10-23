@@ -15,4 +15,11 @@ public interface MenuService {
      * @return
      */
     public Result getRoutes();
+
+    /**
+     * 获取树形菜选项列表
+     * @return
+     */
+    public Result getTreeSelect();
+
 }

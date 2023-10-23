@@ -34,4 +34,15 @@ public class MenuController extends BaseController {
     }
 
 
+    /**
+     * 获取树形菜选项列表
+     * @return
+     */
+    @GetMapping("/treeSelect")
+    @SystemLog(businessName = "获取树形菜选项列表")
+    @ApiOperation(value = "获取树形菜选项列表",notes = "获取树形菜选项列表")
+    public Result getTreeSelect(){
+        return menuService.getTreeSelect();
+    }
+
 }
