@@ -1,0 +1,97 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::               (v2.7.13)
+
+2023-10-25 23:36:41.145  INFO 81516 --- [           main] ink.eccentric.BlogApplication            : Starting BlogApplication using Java 17.0.9 on EccentricPC with PID 81516 (/home/eccentric/Documents/eccentric-blog/deploy/ecc-blog.jar started by eccentric in /home/eccentric/Documents/eccentric-blog/deploy)
+2023-10-25 23:36:41.148  INFO 81516 --- [           main] ink.eccentric.BlogApplication            : No active profile set, falling back to 1 default profile: "default"
+2023-10-25 23:36:42.095  INFO 81516 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-10-25 23:36:42.097  INFO 81516 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-10-25 23:36:42.117  INFO 81516 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2023-10-25 23:36:43.049  INFO 81516 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7777 (http)
+2023-10-25 23:36:43.064  INFO 81516 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-10-25 23:36:43.064  INFO 81516 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.76]
+2023-10-25 23:36:43.162  INFO 81516 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-10-25 23:36:43.162  INFO 81516 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1964 ms
+Logging initialized using 'class org.apache.ibatis.logging.stdout.StdOutImpl' adapter.
+Property 'mapperLocations' was not specified.
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.4.3 
+2023-10-25 23:36:44.902  INFO 81516 --- [           main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-10-25 23:36:45.715  INFO 81516 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1a6dc589, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@697a34af, org.springframework.security.web.context.SecurityContextPersistenceFilter@2c88a3e8, org.springframework.security.web.header.HeaderWriterFilter@d7109be, org.springframework.web.filter.CorsFilter@70211df5, org.springframework.security.web.authentication.logout.LogoutFilter@44ed0a8f, ink.eccentric.filter.JwtAuthenticationTokenFilter@3bc735b3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3c78e551, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@64aad809, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4c5228e7, org.springframework.security.web.session.SessionManagementFilter@7b27e8f4, org.springframework.security.web.access.ExceptionTranslationFilter@7654f833, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@d5af0a5]
+2023-10-25 23:36:45.794  INFO 81516 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7777 (http) with context path ''
+2023-10-25 23:36:45.795  INFO 81516 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2023-10-25 23:36:45.818  INFO 81516 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2023-10-25 23:36:45.854  INFO 81516 --- [           main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2023-10-25 23:36:45.990  INFO 81516 --- [           main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_1
+2023-10-25 23:36:45.995  INFO 81516 --- [           main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_2
+2023-10-25 23:36:46.005  INFO 81516 --- [           main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_3
+2023-10-25 23:36:46.009  INFO 81516 --- [           main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_4
+2023-10-25 23:36:46.040  INFO 81516 --- [           main] ink.eccentric.BlogApplication            : Started BlogApplication in 5.301 seconds (JVM running for 5.711)
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3e906375] was not registered for synchronization because synchronization is not active
+2023-10-25 23:36:46.060  INFO 81516 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-10-25 23:36:46.179  INFO 81516 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+JDBC Connection [HikariProxyConnection@1822624650 wrapping com.mysql.cj.jdbc.ConnectionImpl@4a92c6a9] will not be managed by Spring
+==>  Preparing: select id,view_count from article
+==> Parameters: 
+<==    Columns: id, view_count
+<==        Row: 1, 281
+<==        Row: 2, 26
+<==        Row: 3, 35
+<==        Row: 5, 66
+<==        Row: 23, 66
+<==        Row: 24, 45
+<==        Row: 25, 45
+<==        Row: 26, 0
+<==        Row: 27, 46
+<==        Row: 28, 45
+<==        Row: 29, 46
+<==      Total: 11
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3e906375]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@45098dd1] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@258024972 wrapping com.mysql.cj.jdbc.ConnectionImpl@4a92c6a9] will not be managed by Spring
+==>  Preparing: update article set view_count = case id when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? end where id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )
+==> Parameters: 1(Long), 281(Long), 2(Long), 26(Long), 3(Long), 35(Long), 4(Long), 165(Long), 5(Long), 66(Long), 8(Long), 45(Long), 9(Long), 45(Long), 10(Long), 45(Long), 11(Long), 45(Long), 12(Long), 45(Long), 13(Long), 45(Long), 14(Long), 45(Long), 15(Long), 45(Long), 16(Long), 45(Long), 17(Long), 45(Long), 19(Long), 45(Long), 20(Long), 47(Long), 21(Long), 45(Long), 22(Long), 45(Long), 23(Long), 66(Long), 24(Long), 45(Long), 25(Long), 45(Long), 26(Long), 0(Long), 27(Long), 46(Long), 28(Long), 45(Long), 29(Long), 46(Long), 30(Long), 45(Long), 31(Long), 45(Long), 32(Long), 45(Long), 1(Long), 2(Long), 3(Long), 4(Long), 5(Long), 8(Long), 9(Long), 10(Long), 11(Long), 12(Long), 13(Long), 14(Long), 15(Long), 16(Long), 17(Long), 19(Long), 20(Long), 21(Long), 22(Long), 23(Long), 24(Long), 25(Long), 26(Long), 27(Long), 28(Long), 29(Long), 30(Long), 31(Long), 32(Long)
+<==    Updates: 11
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@45098dd1]
+2023-10-25 23:40:00.074  INFO 81516 --- [   scheduling-1] i.e.service.impl.ArticleServiceImpl      : 定时任务：访问量同步完成
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6cb8577] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@500912175 wrapping com.mysql.cj.jdbc.ConnectionImpl@4a92c6a9] will not be managed by Spring
+==>  Preparing: update article set view_count = case id when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? end where id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )
+==> Parameters: 1(Long), 281(Long), 2(Long), 26(Long), 3(Long), 35(Long), 4(Long), 165(Long), 5(Long), 66(Long), 8(Long), 45(Long), 9(Long), 45(Long), 10(Long), 45(Long), 11(Long), 45(Long), 12(Long), 45(Long), 13(Long), 45(Long), 14(Long), 45(Long), 15(Long), 45(Long), 16(Long), 45(Long), 17(Long), 45(Long), 19(Long), 45(Long), 20(Long), 47(Long), 21(Long), 45(Long), 22(Long), 45(Long), 23(Long), 66(Long), 24(Long), 45(Long), 25(Long), 45(Long), 26(Long), 0(Long), 27(Long), 46(Long), 28(Long), 45(Long), 29(Long), 46(Long), 30(Long), 45(Long), 31(Long), 45(Long), 32(Long), 45(Long), 1(Long), 2(Long), 3(Long), 4(Long), 5(Long), 8(Long), 9(Long), 10(Long), 11(Long), 12(Long), 13(Long), 14(Long), 15(Long), 16(Long), 17(Long), 19(Long), 20(Long), 21(Long), 22(Long), 23(Long), 24(Long), 25(Long), 26(Long), 27(Long), 28(Long), 29(Long), 30(Long), 31(Long), 32(Long)
+<==    Updates: 11
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6cb8577]
+2023-10-25 23:50:00.018  INFO 81516 --- [   scheduling-1] i.e.service.impl.ArticleServiceImpl      : 定时任务：访问量同步完成
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e11ef22] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1412113322 wrapping com.mysql.cj.jdbc.ConnectionImpl@4a92c6a9] will not be managed by Spring
+==>  Preparing: update article set view_count = case id when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? end where id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )
+==> Parameters: 1(Long), 281(Long), 2(Long), 26(Long), 3(Long), 35(Long), 4(Long), 165(Long), 5(Long), 66(Long), 8(Long), 45(Long), 9(Long), 45(Long), 10(Long), 45(Long), 11(Long), 45(Long), 12(Long), 45(Long), 13(Long), 45(Long), 14(Long), 45(Long), 15(Long), 45(Long), 16(Long), 45(Long), 17(Long), 45(Long), 19(Long), 45(Long), 20(Long), 47(Long), 21(Long), 45(Long), 22(Long), 45(Long), 23(Long), 66(Long), 24(Long), 45(Long), 25(Long), 45(Long), 26(Long), 0(Long), 27(Long), 46(Long), 28(Long), 45(Long), 29(Long), 46(Long), 30(Long), 45(Long), 31(Long), 45(Long), 32(Long), 45(Long), 1(Long), 2(Long), 3(Long), 4(Long), 5(Long), 8(Long), 9(Long), 10(Long), 11(Long), 12(Long), 13(Long), 14(Long), 15(Long), 16(Long), 17(Long), 19(Long), 20(Long), 21(Long), 22(Long), 23(Long), 24(Long), 25(Long), 26(Long), 27(Long), 28(Long), 29(Long), 30(Long), 31(Long), 32(Long)
+<==    Updates: 11
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e11ef22]
+2023-10-26 00:00:00.012  INFO 81516 --- [   scheduling-1] i.e.service.impl.ArticleServiceImpl      : 定时任务：访问量同步完成
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@78f45007] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@2040387780 wrapping com.mysql.cj.jdbc.ConnectionImpl@74a6822e] will not be managed by Spring
+==>  Preparing: update article set view_count = case id when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? end where id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )
+==> Parameters: 1(Long), 281(Long), 2(Long), 26(Long), 3(Long), 35(Long), 4(Long), 165(Long), 5(Long), 66(Long), 8(Long), 45(Long), 9(Long), 45(Long), 10(Long), 45(Long), 11(Long), 45(Long), 12(Long), 45(Long), 13(Long), 45(Long), 14(Long), 45(Long), 15(Long), 45(Long), 16(Long), 45(Long), 17(Long), 45(Long), 19(Long), 45(Long), 20(Long), 47(Long), 21(Long), 45(Long), 22(Long), 45(Long), 23(Long), 66(Long), 24(Long), 45(Long), 25(Long), 45(Long), 26(Long), 0(Long), 27(Long), 46(Long), 28(Long), 45(Long), 29(Long), 46(Long), 30(Long), 45(Long), 31(Long), 45(Long), 32(Long), 45(Long), 1(Long), 2(Long), 3(Long), 4(Long), 5(Long), 8(Long), 9(Long), 10(Long), 11(Long), 12(Long), 13(Long), 14(Long), 15(Long), 16(Long), 17(Long), 19(Long), 20(Long), 21(Long), 22(Long), 23(Long), 24(Long), 25(Long), 26(Long), 27(Long), 28(Long), 29(Long), 30(Long), 31(Long), 32(Long)
+<==    Updates: 11
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@78f45007]
+2023-10-26 00:10:00.010  INFO 81516 --- [   scheduling-1] i.e.service.impl.ArticleServiceImpl      : 定时任务：访问量同步完成
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@fc6ee5b] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@411720863 wrapping com.mysql.cj.jdbc.ConnectionImpl@74a6822e] will not be managed by Spring
+==>  Preparing: update article set view_count = case id when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? when ? then ? end where id in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )
+==> Parameters: 1(Long), 281(Long), 2(Long), 26(Long), 3(Long), 35(Long), 4(Long), 165(Long), 5(Long), 66(Long), 8(Long), 45(Long), 9(Long), 45(Long), 10(Long), 45(Long), 11(Long), 45(Long), 12(Long), 45(Long), 13(Long), 45(Long), 14(Long), 45(Long), 15(Long), 45(Long), 16(Long), 45(Long), 17(Long), 45(Long), 19(Long), 45(Long), 20(Long), 47(Long), 21(Long), 45(Long), 22(Long), 45(Long), 23(Long), 66(Long), 24(Long), 45(Long), 25(Long), 45(Long), 26(Long), 0(Long), 27(Long), 46(Long), 28(Long), 45(Long), 29(Long), 46(Long), 30(Long), 45(Long), 31(Long), 45(Long), 32(Long), 45(Long), 1(Long), 2(Long), 3(Long), 4(Long), 5(Long), 8(Long), 9(Long), 10(Long), 11(Long), 12(Long), 13(Long), 14(Long), 15(Long), 16(Long), 17(Long), 19(Long), 20(Long), 21(Long), 22(Long), 23(Long), 24(Long), 25(Long), 26(Long), 27(Long), 28(Long), 29(Long), 30(Long), 31(Long), 32(Long)
+<==    Updates: 11
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@fc6ee5b]
+2023-10-26 00:20:00.012  INFO 81516 --- [   scheduling-1] i.e.service.impl.ArticleServiceImpl      : 定时任务：访问量同步完成

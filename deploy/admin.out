@@ -1,0 +1,123 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::               (v2.7.13)
+
+2023-10-25 23:36:12.776  INFO 81378 --- [           main] ink.eccentric.AdminApplication           : Starting AdminApplication using Java 17.0.9 on EccentricPC with PID 81378 (/home/eccentric/Documents/eccentric-blog/deploy/admin.jar started by eccentric in /home/eccentric/Documents/eccentric-blog/deploy)
+2023-10-25 23:36:12.778  INFO 81378 --- [           main] ink.eccentric.AdminApplication           : No active profile set, falling back to 1 default profile: "default"
+2023-10-25 23:36:13.664  INFO 81378 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-10-25 23:36:13.667  INFO 81378 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2023-10-25 23:36:13.687  INFO 81378 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2023-10-25 23:36:14.616  INFO 81378 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8989 (http)
+2023-10-25 23:36:14.629  INFO 81378 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-10-25 23:36:14.630  INFO 81378 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.76]
+2023-10-25 23:36:14.723  INFO 81378 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-10-25 23:36:14.723  INFO 81378 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1894 ms
+Logging initialized using 'class org.apache.ibatis.logging.stdout.StdOutImpl' adapter.
+Property 'mapperLocations' was not specified.
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.4.3 
+2023-10-25 23:36:16.478  INFO 81378 --- [           main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-10-25 23:36:17.124  INFO 81378 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@29149030, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@38b8b6c0, org.springframework.security.web.context.SecurityContextPersistenceFilter@32130e61, org.springframework.security.web.header.HeaderWriterFilter@6ad16c5d, org.springframework.web.filter.CorsFilter@68868328, org.springframework.security.web.authentication.logout.LogoutFilter@3d96fa9e, ink.eccentric.filter.JwtAuthenticationTokenFilter@4f449e8f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2370ac7a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@21505815, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@173a6728, org.springframework.security.web.session.SessionManagementFilter@2f5b8250, org.springframework.security.web.access.ExceptionTranslationFilter@423b2b62, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@254f906e]
+2023-10-25 23:36:17.194  INFO 81378 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8989 (http) with context path ''
+2023-10-25 23:36:17.195  INFO 81378 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2023-10-25 23:36:17.219  INFO 81378 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2023-10-25 23:36:17.263  INFO 81378 --- [           main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2023-10-25 23:36:17.442  INFO 81378 --- [           main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_1
+2023-10-25 23:36:17.457  INFO 81378 --- [           main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_2
+2023-10-25 23:36:17.471  INFO 81378 --- [           main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: changeStatusUsingPUT_1
+2023-10-25 23:36:17.479  INFO 81378 --- [           main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_3
+2023-10-25 23:36:17.494  INFO 81378 --- [           main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_4
+2023-10-25 23:36:17.497  INFO 81378 --- [           main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: listUsingGET_5
+2023-10-25 23:36:17.508  INFO 81378 --- [           main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: changeStatusUsingPUT_2
+2023-10-25 23:36:17.547  INFO 81378 --- [           main] ink.eccentric.AdminApplication           : Started AdminApplication in 5.213 seconds (JVM running for 5.607)
+2023-10-25 23:36:56.703  INFO 81378 --- [nio-8989-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-10-25 23:36:56.703  INFO 81378 --- [nio-8989-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-10-25 23:36:56.704  INFO 81378 --- [nio-8989-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-10-25 23:36:57.394  INFO 81378 --- [nio-8989-exec-2] ink.eccentric.aspect.LogAspect           : ===============Start===============
+2023-10-25 23:36:57.395  INFO 81378 --- [nio-8989-exec-2] ink.eccentric.aspect.LogAspect           : URL              : http://localhost:8989/user/getInfo
+2023-10-25 23:36:57.395  INFO 81378 --- [nio-8989-exec-2] ink.eccentric.aspect.LogAspect           : class ink.eccentric.controller.UserController
+2023-10-25 23:36:57.396  INFO 81378 --- [nio-8989-exec-2] ink.eccentric.aspect.LogAspect           : BusinessName     : 获取用户的详细信息
+2023-10-25 23:36:57.396  INFO 81378 --- [nio-8989-exec-2] ink.eccentric.aspect.LogAspect           : HTTP Method      : GET
+2023-10-25 23:36:57.396  INFO 81378 --- [nio-8989-exec-2] ink.eccentric.aspect.LogAspect           : Class Method     : ink.eccentric.controller.UserController.getInfo
+2023-10-25 23:36:57.396  INFO 81378 --- [nio-8989-exec-2] ink.eccentric.aspect.LogAspect           : IP               : 127.0.0.1
+2023-10-25 23:36:57.402  INFO 81378 --- [nio-8989-exec-2] ink.eccentric.aspect.LogAspect           : Request Params   : []
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@554a4149] was not registered for synchronization because synchronization is not active
+2023-10-25 23:36:57.441  INFO 81378 --- [nio-8989-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-10-25 23:36:57.590  INFO 81378 --- [nio-8989-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+JDBC Connection [HikariProxyConnection@2042996633 wrapping com.mysql.cj.jdbc.ConnectionImpl@7e258cc8] will not be managed by Spring
+==>  Preparing: select distinct sr.role_key from sys_role sr left join sys_user_role sur on sr.id = sur.role_id where sur.user_id = ? and sr.status=0 and sr.del_flag=0
+==> Parameters: 1(Long)
+<==    Columns: role_key
+<==        Row: admin
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@554a4149]
+2023-10-25 23:36:57.699  INFO 81378 --- [nio-8989-exec-2] ink.eccentric.aspect.LogAspect           : Response         : {"code":200,"data":{"permissions":[],"roles":["admin"],"user":{"avatar":"http://cdn.eccentric.ink/avatar/2023-07-05/1688567417486.png","email":"eccentric0521@gmail.com","id":1,"nickName":"eccentric","sex":"1"}},"message":"操作成功"}
+2023-10-25 23:36:57.700  INFO 81378 --- [nio-8989-exec-2] ink.eccentric.aspect.LogAspect           : ================End================
+2023-10-25 23:36:57.783  INFO 81378 --- [nio-8989-exec-4] ink.eccentric.aspect.LogAspect           : ===============Start===============
+2023-10-25 23:36:57.783  INFO 81378 --- [nio-8989-exec-4] ink.eccentric.aspect.LogAspect           : URL              : http://localhost:8989/menu/getRouters
+2023-10-25 23:36:57.783  INFO 81378 --- [nio-8989-exec-4] ink.eccentric.aspect.LogAspect           : class ink.eccentric.controller.MenuController
+2023-10-25 23:36:57.783  INFO 81378 --- [nio-8989-exec-4] ink.eccentric.aspect.LogAspect           : BusinessName     : 获取菜单信息
+2023-10-25 23:36:57.783  INFO 81378 --- [nio-8989-exec-4] ink.eccentric.aspect.LogAspect           : HTTP Method      : GET
+2023-10-25 23:36:57.783  INFO 81378 --- [nio-8989-exec-4] ink.eccentric.aspect.LogAspect           : Class Method     : ink.eccentric.controller.MenuController.getRoutes
+2023-10-25 23:36:57.783  INFO 81378 --- [nio-8989-exec-4] ink.eccentric.aspect.LogAspect           : IP               : 127.0.0.1
+2023-10-25 23:36:57.784  INFO 81378 --- [nio-8989-exec-4] ink.eccentric.aspect.LogAspect           : Request Params   : []
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1469fbcc] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1461612808 wrapping com.mysql.cj.jdbc.ConnectionImpl@7e258cc8] will not be managed by Spring
+==>  Preparing: select distinct sr.id from sys_role sr left join sys_user_role sur on sr.id = sur.role_id where sur.user_id = ? and sr.status=0 and sr.del_flag=0
+==> Parameters: 1(Long)
+<==    Columns: id
+<==        Row: 1
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1469fbcc]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@74460483] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1302039875 wrapping com.mysql.cj.jdbc.ConnectionImpl@7e258cc8] will not be managed by Spring
+==>  Preparing: select * from sys_menu where parent_id=0 and del_flag=0 and status=0 and menu_type in ('M','C') order by parent_id,order_num
+==> Parameters: 
+<==    Columns: id, menu_name, parent_id, order_num, path, component, is_frame, menu_type, visible, status, perms, icon, create_by, create_time, update_by, update_time, remark, del_flag
+<==        Row: 2023, 写博文, 0, 0, write, content/article/write/index, 1, C, 0, 0, content:article:writer, build, null, 2022-01-08 03:39:58, 1, 2023-10-25 18:36:44, , 0
+<==        Row: 1, 系统管理, 0, 1, system, null, 1, M, 0, 0, , system, 0, 2021-11-12 10:46:19, 1, 2023-10-25 18:35:41, 系统管理目录, 0
+<==        Row: 2017, 内容管理, 0, 4, content, null, 1, M, 0, 0, null, table, null, 2022-01-08 02:44:38, 1, 2022-07-31 12:34:23, , 0
+<==      Total: 3
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@74460483]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4dcaa5c3] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@939700479 wrapping com.mysql.cj.jdbc.ConnectionImpl@7e258cc8] will not be managed by Spring
+==>  Preparing: select * from sys_menu where parent_id=? and del_flag=0 and status=0 and menu_type in ('M','C') order by parent_id,order_num
+==> Parameters: 2023(Long)
+<==      Total: 0
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4dcaa5c3]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@9e767a7] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@295383013 wrapping com.mysql.cj.jdbc.ConnectionImpl@7e258cc8] will not be managed by Spring
+==>  Preparing: select * from sys_menu where parent_id=? and del_flag=0 and status=0 and menu_type in ('M','C') order by parent_id,order_num
+==> Parameters: 1(Long)
+<==    Columns: id, menu_name, parent_id, order_num, path, component, is_frame, menu_type, visible, status, perms, icon, create_by, create_time, update_by, update_time, remark, del_flag
+<==        Row: 100, 用户管理, 1, 1, user, system/user/index, 1, C, 0, 0, system:user:list, user, 0, 2021-11-12 10:46:19, 1, 2022-07-31 15:47:58, 用户管理菜单, 0
+<==        Row: 101, 角色管理, 1, 2, role, system/role/index, 1, C, 0, 0, system:role:list, peoples, 0, 2021-11-12 10:46:19, 0, null, 角色管理菜单, 0
+<==        Row: 102, 菜单管理, 1, 3, menu, system/menu/index, 1, C, 0, 0, system:menu:list, tree-table, 0, 2021-11-12 10:46:19, 0, null, 菜单管理菜单, 0
+<==      Total: 3
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@9e767a7]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6e2ccfcb] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@1547978742 wrapping com.mysql.cj.jdbc.ConnectionImpl@7e258cc8] will not be managed by Spring
+==>  Preparing: select * from sys_menu where parent_id=? and del_flag=0 and status=0 and menu_type in ('M','C') order by parent_id,order_num
+==> Parameters: 2017(Long)
+<==    Columns: id, menu_name, parent_id, order_num, path, component, is_frame, menu_type, visible, status, perms, icon, create_by, create_time, update_by, update_time, remark, del_flag
+<==        Row: 2019, 文章管理, 2017, 0, article, content/article/index, 1, C, 0, 0, content:article:list, build, null, 2022-01-08 02:53:10, null, 2022-01-08 02:53:10, , 0
+<==        Row: 2018, 分类管理, 2017, 1, category, content/category/index, 1, C, 0, 0, content:category:list, example, null, 2022-01-08 02:51:45, null, 2022-01-08 02:51:45, , 0
+<==        Row: 2022, 友链管理, 2017, 4, link, content/link/index, 1, C, 0, 0, content:link:list, 404, null, 2022-01-08 02:56:50, null, 2022-01-08 02:56:50, , 0
+<==        Row: 2021, 标签管理, 2017, 6, tag, content/tag/index, 1, C, 0, 0, content:tag:index, button, null, 2022-01-08 02:55:37, null, 2022-01-08 02:55:50, , 0
+<==      Total: 4
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6e2ccfcb]
+2023-10-25 23:36:57.854  INFO 81378 --- [nio-8989-exec-4] ink.eccentric.aspect.LogAspect           : Response         : {"code":200,"data":{"menus":[{"children":[],"component":"content/article/write/index","createTime":1641584398000,"icon":"build","id":2023,"menuName":"写博文","menuType":"C","orderNum":0,"path":"write","perms":"content:article:writer","status":"0","visible":"0"},{"children":[{"component":"system/user/index","createTime":1636685179000,"icon":"user","id":100,"menuName":"用户管理","menuType":"C","orderNum":1,"path":"user","perms":"system:user:list","status":"0","visible":"0"},{"component":"system/role/index","createTime":1636685179000,"icon":"peoples","id":101,"menuName":"角色管理","menuType":"C","orderNum":2,"path":"role","perms":"system:role:list","status":"0","visible":"0"},{"component":"system/menu/index","createTime":1636685179000,"icon":"tree-table","id":102,"menuName":"菜单管理","menuType":"C","orderNum":3,"path":"menu","perms":"system:menu:list","status":"0","visible":"0"}],"createTime":1636685179000,"icon":"system","id":1,"menuName":"系统管理","menuType":"M","orderNum":1,"path":"system","perms":"","status":"0","visible":"0"},{"children":[{"component":"content/article/index","createTime":1641581590000,"icon":"build","id":2019,"menuName":"文章管理","menuType":"C","orderNum":0,"path":"article","perms":"content:article:list","status":"0","visible":"0"},{"component":"content/category/index","createTime":1641581505000,"icon":"example","id":2018,"menuName":"分类管理","menuType":"C","orderNum":1,"path":"category","perms":"content:category:list","status":"0","visible":"0"},{"component":"content/link/index","createTime":1641581810000,"icon":"404","id":2022,"menuName":"友链管理","menuType":"C","orderNum":4,"path":"link","perms":"content:link:list","status":"0","visible":"0"},{"component":"content/tag/index","createTime":1641581737000,"icon":"button","id":2021,"menuName":"标签管理","menuType":"C","orderNum":6,"path":"tag","perms":"content:tag:index","status":"0","visible":"0"}],"createTime":1641581078000,"icon":"table","id":2017,"menuName":"内容管理","menuType":"M","orderNum":4,"path":"content","status":"0","visible":"0"}]},"message":"操作成功"}
+2023-10-25 23:36:57.854  INFO 81378 --- [nio-8989-exec-4] ink.eccentric.aspect.LogAspect           : ================End================
