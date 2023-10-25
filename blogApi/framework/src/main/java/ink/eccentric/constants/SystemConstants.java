@@ -56,4 +56,9 @@ public class SystemConstants {
 
     public static final List<Long> BASE_ROLE_ID_LIST = List.of(1L,2L);
 
+    public static final String DIRECTORY = "M";
+
+    public static final String MENU = "C";
+
+    public static final String BUTTON = "F";
 }

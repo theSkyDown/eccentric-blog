@@ -1,6 +1,7 @@
 package ink.eccentric.service.impl;
 
-import ink.eccentric.constants.SystemConstants;
+import ink.eccentric.domain.dto.menu.MenuDto;
+import ink.eccentric.domain.po.Menu;
 import ink.eccentric.domain.po.User;
 import ink.eccentric.domain.vo.common.Result;
 import ink.eccentric.domain.vo.menu.MenuTreeSelectVo;
@@ -13,10 +14,7 @@ import ink.eccentric.utils.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * @author eccentric
@@ -61,5 +59,41 @@ public class MenuServiceImpl implements MenuService {
             menuTreeSelectVo.setChildren(menuMapper.getTreeSelectListChildren(menuTreeSelectVo.getId()));
         }
         return Result.ok(menuTreeSelectList);
+    }
+
+    @Override
+    public Result list(String status, String menuName) {
+        return Result.ok(menuMapper.list(status,menuName));
+    }
+
+    @Override
+    public Result addMenu(MenuDto menuDto) {
+        Menu menu = BeanCopyUtil.copyBean(menuDto, Menu.class);
+        menu.setCreateBy(SecurityUtil.getUser().getId());
+        menu.setUpdateBy(SecurityUtil.getUser().getId());
+        menu.setCreateTime(new Date());
+        menu.setUpdateTime(new Date());
+        return menuMapper.addMenu(menu)>0?Result.ok():Result.fail();
+    }
+
+    @Override
+    public Result deleteMenu(Long id){
+        if (menuMapper.getChildMenuCount(id)>0){
+            return Result.fail().message("存在子菜单,不允许删除");
+        }
+        return menuMapper.deleteMenu(id,SecurityUtil.getUser().getId(),new Date())>0?Result.ok():Result.fail();
+    }
+
+    @Override
+    public Result getMenuDetail(Long id) {
+        return Result.ok(menuMapper.getMenuById(id));
+    }
+
+    @Override
+    public Result updateMenu(MenuDto menuDto) {
+        Menu menu = BeanCopyUtil.copyBean(menuDto, Menu.class);
+        menu.setUpdateBy(SecurityUtil.getUser().getId());
+        menu.setUpdateTime(new Date());
+        return menuMapper.updateMenu(menu)>0?Result.ok():Result.fail();
     }
 }

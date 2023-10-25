@@ -67,4 +67,56 @@
         order by parent_id,order_num
     </select>
 
+    <select id="list" resultType="ink.eccentric.domain.vo.menu.MenuVo">
+        select * from sys_menu where del_flag=0
+            <if test="status!=null and status!=''">
+                and status like "%"#{status}"%"
+            </if>
+            <if test="menuName!=null and menuName!=''">
+                and menu_name like "%"#{menuName}"%"
+            </if>
+            order by parent_id,order_num
+    </select>
+
+    <insert id="addMenu">
+        <if test="menuType=='M'.toString()">
+            insert into sys_menu(menu_name,parent_id,order_num,path,menu_type,visible,status,icon,create_by,create_time,update_by,update_time)
+                values(#{menuName},#{parentId},#{orderNum},#{path},#{menuType},#{visible},#{status},#{icon},#{createBy},#{createTime},#{updateBy},#{updateTime})
+        </if>
+        <if test="menuType=='C'.toString()">
+            insert into sys_menu(menu_name,parent_id,order_num,path,component,menu_type,visible,status,perms,icon,create_by,create_time,update_by,update_time)
+                values(#{menuName},#{parentId},#{orderNum},#{path},#{component},#{menuType},#{visible},#{status},#{perms},#{icon},#{createBy},#{createTime},#{updateBy},#{updateTime})
+        </if>
+        <if test="menuType=='F'.toString()">
+            insert into sys_menu(menu_name,parent_id,order_num,menu_type,visible,status,perms,create_by,create_time,update_by,update_time)
+                values(#{menuName},#{parentId},#{orderNum},#{menuType},#{visible},#{status},#{perms},#{createBy},#{createTime},#{updateBy},#{updateTime})
+        </if>
+    </insert>
+
+    <select id="getChildMenuCount" resultType="java.lang.Integer">
+        select count(*) from sys_menu where parent_id=#{parentId}
+    </select>
+
+    <update id="deleteMenu">
+        update sys_menu set del_flag=1,update_by=#{updateBy},update_time=#{updateTime}
+            where id=#{id}
+    </update>
+
+    <select id="getMenuById" resultType="ink.eccentric.domain.vo.menu.MenuVo">
+        select * from sys_menu where del_flag=0 and id=#{id}
+    </select>
+
+    <update id="updateMenu">
+        update sys_menu set menu_name=#{menuName},parent_id=#{parentId},order_num=#{orderNum},path=#{path},menu_type=#{menuType},visible=#{visible},status=#{status},update_by=#{updateBy},update_time=#{updateTime}
+            <if test="component!=null">
+                ,component=#{component}
+            </if>
+            <if test="perms!=null">
+                ,perms=#{perms}
+            </if>
+            <if test="icon!=null">
+                ,icon=#{icon}
+            </if>
+        where id = #{id}
+    </update>
 </mapper>
